@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#317EFB">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Login template 1">
+  <meta name="keywords" content="HTML, CSS, JS, Webpack, Webpack 4, Nodejs">
+  <meta name="author" content="Abhay Pai">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <title>Iframe Communication 2 | Abhay Pai</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Iframe Communication 2. This page is just for testing the post message.</h1>
+  </header>
+  <section>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+  <script type="text/javascript">
+    // calling self initializing function for getting the message
+    (function initGet() {
+      // adding a listener to the postmessage on this page
+      window.addEventListener('message', getMessage);
+
+      // function get message
+      function getMessage(e) {
+        // checking if data recieved
+        // console.log(e);
+
+        // checking if data communication is set to true
+        if (e.data.communication) {
+          // debugging if data is calculated properly
+          // console.log(calculcateDocHeight());
+
+          // setting up data to send back
+          var data = {
+            'docHeight': calculcateDocHeight(),
+          };
+
+          // sending back data to the source using postmessage
+          e.source.postMessage(data, '*');
+        }
+      }
+
+      // calculating height of the content in this body
+      function calculcateDocHeight(){
+        return (document.body.clientHeight || document.body.scrollHeight) + 50;
+      }
+    })();
+  </script>
+</body>
+</html>
